@@ -1,0 +1,45 @@
+{
+  "name": "rinha-de-backend-2024-q1-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsup src",
+    "start": "node dist/main.js"
+  },
+  "keywords": [],
+  "author": "Emerson Costa <4emcos@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "@types/pg": "^8.11.2",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.0.0",
+    "prettier": "^3.2.5",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@fastify/otel": "^0.9.4",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.63.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.204.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.204.0",
+    "@opentelemetry/instrumentation-fastify": "^0.49.0",
+    "@opentelemetry/instrumentation-http": "^0.204.0",
+    "@opentelemetry/resources": "^2.1.0",
+    "@opentelemetry/sdk-metrics": "^2.1.0",
+    "@opentelemetry/sdk-node": "^0.204.0",
+    "@opentelemetry/semantic-conventions": "^1.37.0",
+    "fastify": "^4.26.2",
+    "pg": "^8.11.3"
+  }
+}
