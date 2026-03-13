@@ -1,26 +1,16 @@
-import * as api from '@opentelemetry/api'
+import { logs, SeverityNumber } from '@opentelemetry/api-logs'
 
 type Attributes = Record<string, unknown>
 
-const logsApi = (api as any).logs
-const SeverityNumber = (api as any).SeverityNumber
-
-const hasLogsApi = logsApi != null && SeverityNumber != null
-
-const logger = hasLogsApi ? logsApi.getLogger('app-logger') : null
+const logger = logs.getLogger('app-logger')
 
 export function logInfo(message: string, attributes?: Attributes): void {
-  if (logger != null) {
-    logger.emit({
-      severityNumber: SeverityNumber.INFO,
-      severityText: 'INFO',
-      body: message,
-      attributes,
-    })
-    return
-  }
-
-  console.log(message, attributes)
+  logger.emit({
+    severityNumber: SeverityNumber.INFO,
+    severityText: 'INFO',
+    body: message,
+    attributes,
+  })
 }
 
 export function logError(
@@ -28,24 +18,19 @@ export function logError(
   error?: unknown,
   attributes?: Attributes,
 ): void {
-  if (logger != null) {
-    logger.emit({
-      severityNumber: SeverityNumber.ERROR,
-      severityText: 'ERROR',
-      body: message,
-      attributes: {
-        ...attributes,
-        error:
-          error instanceof Error
-            ? error.message
-            : error != null
-              ? String(error)
-              : undefined,
-      },
-    })
-    return
-  }
-
-  console.error(message, error, attributes)
+  logger.emit({
+    severityNumber: SeverityNumber.ERROR,
+    severityText: 'ERROR',
+    body: message,
+    attributes: {
+      ...attributes,
+      error:
+        error instanceof Error
+          ? error.message
+          : error != null
+            ? String(error)
+            : undefined,
+    },
+  })
 }
 

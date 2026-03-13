@@ -80,7 +80,7 @@ services:
     # ------ monitoring services -------
 
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.102.0
+    image: otel/opentelemetry-collector-contrib:0.139.0
     command: ["--config=/etc/otel-collector-config.yml"]
     volumes:
       - ./infra/otel-collector-config.yml:/etc/otel-collector-config.yml:ro

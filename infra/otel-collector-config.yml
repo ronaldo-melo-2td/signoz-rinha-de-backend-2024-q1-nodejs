@@ -13,14 +13,6 @@ receivers:
       filesystem: {}
       network: {}
 
-processors:
-  batch: {}
-  resource:
-    attributes:
-      - key: tenant.id
-        value: "001"
-        action: upsert
-
 exporters:
   otlp:
     endpoint: 212.85.23.26:4317
@@ -30,15 +22,14 @@ exporters:
 service:
   pipelines:
     metrics:
-      receivers: [hostmetrics, otlp]
-      processors: [resource, batch]
+      receivers: [hostmetrics, otlp]      
       exporters: [otlp]
     logs:
-      receivers: [otlp]
-      processors: [resource, batch]
+      receivers: [otlp]      
       exporters: [otlp]
     traces:
-      receivers: [otlp]
-      processors: [resource, batch]
+      receivers: [otlp]      
       exporters: [otlp]
-
+  telemetry:
+      logs:
+        level: "debug"
